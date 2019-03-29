@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"> 
+    <h:head>
+        <meta charset="utf-8" />
+        <title>Inscription</title>
+        
+        <h:outputStylesheet library="default" name="css/style.css"  />
+        <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+        <style> 
+            body { margin-top : 20px}
+        </style>
+        <f:loadBundle basename="com.nastib.bundle.messages" var="msg"/>
+    </h:head>
+    <h:body class="container col-md-4" >
+      <h:form id="formulaire">
+         <fieldset>
+             <legend>Inscription</legend>
+            <div class="form-group">
+         	
+	     	<h:outputLabel for="email">Adresse email <span class="requis">*</span></h:outputLabel>
+	        <h:inputText id="email" value="#{inscrireBean.utilisateur.email}" required="true" size="20" maxlength="60" class="form-control" label="email" requiredMessage="#{msg['inscription.email']}">
+                     <f:ajax event="blur" render="emailMessage" />
+                </h:inputText>
+	        <h:message id="emailMessage" for="email" errorClass="erreur" />
+            </div>
+            <div class="form-group">
+	        <h:outputLabel for="motdepasse">Mot de passe <span class="requis">*</span></h:outputLabel>
+	        <h:inputSecret id="motdepasse" value="#{inscrireBean.utilisateur.motDePasse}" required="true" size="20" maxlength="20" class="form-control" label="motdepasse" requiredMessage="#{msg['inscription.motdepasse']}">
+                    <f:ajax event="blur" render="motDePasseMessage" />
+                </h:inputSecret>    
+	        <h:message id="motDePasseMessage" for="motdepasse" errorClass="erreur" />
+            </div>
+            <div class="form-group">
+	        <h:outputLabel for="confirmation">Confirmation du mot de passe <span class="requis">*</span></h:outputLabel>
+	        <h:inputSecret id="confirmation" value="#{inscrireBean.utilisateur.motDePasse}" required="true" size="20" maxlength="20" class="form-control" label="confirmation" requiredMessage="#{msg['inscription.confirmation']}">
+                    <f:ajax event="blur" render="confirmationMessage" />
+                </h:inputSecret>
+	        <h:message id="confirmationMessage" for="confirmation" errorClass="erreur" />
+            </div>
+            <div class="form-group">
+	        <h:outputLabel for="nom">Nom d'utilisateur <span class="requis">*</span></h:outputLabel>
+	        <h:inputText id="nom" value="#{inscrireBean.utilisateur.nom}" required="true" size="20" maxlength="20" class="form-control" label="nom" requiredMessage="#{msg['inscription.nom']}">
+                    <f:ajax event="blur" render="nomMessage" />
+                </h:inputText>     
+	        <h:message id="nomMessage" for="nom" errorClass="erreur" />
+            </div>
+	        
+	        <h:messages globalOnly="true" infoClass="info" />
+	
+	        <h:commandButton value="Inscription" action="#{inscrireBean.inscrire}" styleClass="btn btn-primary btn-lg ">
+                    <f:ajax execute="@form" render="@form" />
+                </h:commandButton>
+	        <br />
+          </fieldset>
+        </h:form> 	
+    </h:body>
+</html>

@@ -1,0 +1,7 @@
+com\nastib\jsfproject\beans\InscrireBean.class
+com\nastib\jsfproject\dao\UtilisateurDaoImpl.class
+com\nastib\jsfproject\entities\Utilisateur_.class
+com\nastib\jsfproject\dao\DaoException.class
+com\nastib\jsfproject\entities\Utilisateur.class
+com\nastib\jsfproject\BonjourBean.class
+com\nastib\jsfproject\dao\UtilisateurDao.class
